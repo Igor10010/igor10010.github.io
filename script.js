@@ -16,26 +16,16 @@ function lightSwitch(){
  }
  
 }*/
-/*Current time u clicked on the button*/
+
+//Current time u clicked on the button
 function current() {
     let date = new Date()
-    let hour = date.getHours();
-    let min = date.getMinutes();
-    let sec = date.getSeconds();
-
-    if (min < 10) {
-        min = "0" + min;
-    }
-
-    if (sec < 10) {
-        sec = "0" + sec;
-    }
+    let time = date.toLocaleTimeString();
     document.getElementById("current")
-        .innerHTML = hour + ":" + min +
-        ":" + sec;
+        .innerHTML = time;
 }
 
-/*Shows time you opened this webpage*/
+//Shows time you opened this webpage
 let date = new Date();
 let time = date.toLocaleTimeString();
 
@@ -44,29 +34,25 @@ function visited() {
         .innerHTML = time;
 }
 
-/*Your current time*/
+//Your current time
 let interval;
+const button = document.getElementById("switchButton");
+const paragraph = document.getElementById("timeParagraph");
+button.addEventListener("click", toggleSwitch)
 let show = false;
-const timeContainer = document
-    .getElementById("switch");
-const btn = document.getElementById(
-    "switched");
-btn.addEventListener("click",
-    switched);
-
-function Time() {
-    const date = new Date();
-    timeContainer.innerHTML = date
-        .toLocaleTimeString();
-}
-
-function switched() {
+function toggleSwitch() {
     if (!show) {
-        interval = setInterval(Time, 1000);
         show = true;
-    } else {
-        clearInterval(interval);
+        Time();
+        interval = setInterval(Time, 1000);
+    }
+    else {
         show = false;
-        timeContainer.innerHTML = "";
+        clearInterval(interval);
+        paragraph.textContent = "";
     }
 }
+
+function Time() {
+    paragraph.textContent = new Date().toLocaleTimeString();
+} 

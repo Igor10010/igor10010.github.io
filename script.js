@@ -1,21 +1,32 @@
-//Navigation prompt
-window.onbeforeunload = function () {
-    return true;
-}
-/*
+//Dark and lightmode
 let track = false;
-let body = document.querySelector("body");
+const bgSwitch = document.getElementById("background-switch");
+bgSwitch.addEventListener("click", lightSwitch);
+const heading = document.getElementById("heading");
 function lightSwitch(){
  if (!track) {
  track = true;
- body.style.background-color = "006600";
+     document.body.style.backgroundColor = "#001a00";
+     heading.style.backgroundColor = "black";
+     heading.style.color = "white";
+     bgSwitch.style.backgroundColor = "black";
+     bgSwitch.style.color = "white";
+     bgSwitch.style.borderColor = "black";
+     bgSwitch.style.boxShadow = "0 0 100px white";
+     bgSwitch.textContent = "Darkmode";
  }
  else {
   track = false;
-  body.style.background-color = "42dc83"
+     document.body.style.backgroundColor = "#42dc83";
+     heading.style.backgroundColor = "white";
+     heading.style.color = "black";
+     bgSwitch.style.backgroundColor = "white";
+     bgSwitch.style.color = "black";
+     bgSwitch.style.borderColor = "white";
+     bgSwitch.style.boxShadow = "0 0 0";
+     bgSwitch.textContent = "Lightmode";
  }
- 
-}*/
+}
 
 //Current time u clicked on the button
 function current() {
@@ -36,9 +47,9 @@ function visited() {
 
 //Your current time
 let interval;
-const button = document.getElementById("switchButton");
+const switchButton = document.getElementById("switchButton");
 const paragraph = document.getElementById("timeParagraph");
-button.addEventListener("click", toggleSwitch)
+switchButton.addEventListener("click", toggleSwitch)
 let show = false;
 function toggleSwitch() {
     if (!show) {
